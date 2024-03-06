@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Hello</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="../stylesheets/style.css">
+   <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(251, 255, 251); 
+        }
+        .bhumika {
+            font-size: 8rem;
+            text-align: center;
+            letter-spacing: -4px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: transparent; 
+            white-space: nowrap; 
+            overflow: hidden; 
+            animation: colorFill 2s forwards, moveLeft 2s 2s forwards; 
+        }
+
+        @keyframes colorFill {
+            0% {
+               scale: 2;
+                width: 0; 
+            }
+            100% {
+                color: #4da5df; 
+                width: 30%; /
+            }
+        }
+
+        @keyframes moveLeft {
+            0% {
+                transform: translate(-50%, -50%); 
+            }
+            100% {
+                transform: translate(-50%, -50%); 
+            }
+        }
+     
+        .move {
+    position: relative;
+    animation: moveLeftToRight 4s ease-in-out infinite;
+  }
+
+  @keyframes moveLeftToRight {
+    0% {
+      left: 0;
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(50px);
+    }
+    100% {
+      left: calc(100% - 100px);
+      transform: translateX(0);
+    }
+  }
+</style>
+   
+        
+    </head>
+<body>
+    <div class="overlay">
+        <img class="image w-33 h-35 overflow-hidden" src="https://cdn.dribbble.com/users/1278301/screenshots/4342353/face.gif" alt="">   
+        <h1 id="hello" class="absolute  text-black font-bold top-50" style="font-size: 15rem; font-family: Voyage;">Hello</h1>
+      <div class="page1 text-white  absolute w-full h-full bg-black opacity-0" style="top: 100%;">
+        <div class="bhumika font-style: italic  text-white">Bhumika Gupta</div>
+        <div class="navs font-bold w-full absolute top-2.5 right-0 bg-lime-600 pt-8 pr-6">
+            <div class="nav text-white flex justify-end">
+                <h3 class="mr-5">Home</h3>
+                <h3 class="mr-5">About</h3>
+                <h3 class="mr-5">Project</h3>
+                <h3 class="mr-5">Skills</h3>
+                <h3>Contact</h3>
+            </div>
+        </div>
+        <div class="flex justify-center items-center h-screen data-scroll data-scroll-speed= 2">
+            <h2 class="create text-white uppercase text-center transition-opacity duration-100 opacity-30 move"  style="font-size: 9rem;" >Creative Developer </h2>
+        </div>
+        <div class="flex justify-center items-center overflow-hidden">
+            <img class="bimage absolute min-h-full " src="../images/IMG20240131114046-removebg-preview.png" alt="">
+          </div>
+       </div>  
+    </div>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/scrolltrigger@1.0.1/index.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.7.0/jquery.lettering.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/textillate/0.4.0/jquery.textillate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script>
+        $('#hello').textillate({ in: { effect: 'bounceOut' } });
+        
+        gsap.to("#hello",{
+            y: -90,
+            duration: 2,
+            delay: 1,
+            opacity: 0,
+        });
+
+        gsap.from(".image",{
+            y: -80,
+            duration: 1,
+            delay: 3,
+            scale: 5,
+            opacity: 0,
+        });
+
+        gsap.to(".page1",{
+            top: "0%",
+            delay: 4,
+            opacity: 1,
+            ease: "expo.out"
+        });
+        gsap.to(".bhumika", {
+            top: "10%",
+            left: "10%",
+            fontSize: "2rem",
+            duration: 4,
+            scale: 2,
+            delay: 4, 
+            opacity: 1,
+            ease: "expo.out"
+        });
+        
+        
+        gsap.to('.bimage', {
+            top: "10%", // Move the image to its original position
+            opacity: 1, // Show the image
+            duration: 2, // Animation duration
+            delay: 4 // Delay the animation
+        });
+
+
+
+
+    </script>
+   
+</body>
+</html>
